@@ -7,23 +7,14 @@ const socketIO = require('socket.io')
 const app = express();
 const expressHTTPServer = http.createServer(app);
 const io = new socketIO.Server(expressHTTPServer);
-const helmet = require('helmet');
+
 app.use(express.static('public'))
 app.set('view engine', 'ejs')
 
 app.get('/', (req, res) => {
     res.redirect(`/${uuid()}`)
 })
-app.use(
-    helmet.contentSecurityPolicy({
-      directives: {
-        defaultSrc: ["'self'"],  // Chỉ cho phép tài nguyên từ cùng domain
-        scriptSrc: ["'self'", "https://vercel.live"], // Cho phép tải script từ chính domain và vercel.live (hoặc chặn nó)
-        connectSrc: ["'self'", "https://vercel.live"],  // Cho phép các kết nối WebSocket nếu cần (hoặc loại bỏ vercel.live)
-        // Bạn có thể cấu hình các phần khác như imgSrc, styleSrc tùy theo nhu cầu
-      }
-    })
-  );
+
 
 app.get("/:roomId", (req, res) => {
     const roomId = req.params.roomId;
