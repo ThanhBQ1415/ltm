@@ -15,7 +15,7 @@
         "src": "/(.*)",
         "dest": "/server.js"
       }
-    ],
-    "live": false
+    ]
+   
   }
   
