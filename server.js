@@ -17,9 +17,10 @@ app.get('/', (req, res) => {
 app.use(
     helmet.contentSecurityPolicy({
       directives: {
-        defaultSrc: ["'self'"],
-        scriptSrc: ["'self'"], // Chỉ cho phép script từ chính domain
-        connectSrc: ["'self'"] // Chặn kết nối với các nguồn ngoài nếu cần
+        defaultSrc: ["'self'"],  // Chỉ cho phép tài nguyên từ cùng domain
+        scriptSrc: ["'self'", "https://vercel.live"], // Cho phép tải script từ chính domain và vercel.live (hoặc chặn nó)
+        connectSrc: ["'self'", "https://vercel.live"],  // Cho phép các kết nối WebSocket nếu cần (hoặc loại bỏ vercel.live)
+        // Bạn có thể cấu hình các phần khác như imgSrc, styleSrc tùy theo nhu cầu
       }
     })
   );
