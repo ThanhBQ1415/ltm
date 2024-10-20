@@ -18,7 +18,7 @@ app.use(
     helmet.contentSecurityPolicy({
       directives: {
         defaultSrc: ["'self'"],
-        scriptSrc: ["'self'", "https://vercel.live"],
+        scriptSrc: ["'self'", "https://vercel.live/_next-live/feedback/feedback.js"],
         // Các cài đặt khác cho các tài nguyên khác nếu cần thiết (images, fonts, etc.)
       },
     })
